@@ -24,7 +24,6 @@ namespace PayBaq
         private async void CreateContactStore()
         {
             contacts = await ContactStore.CreateOrOpenAsync(ContactStoreSystemAccessMode.ReadWrite, ContactStoreApplicationAccessMode.ReadOnly);
-             contactList = new ListBox();
             if (contacts.RevisionNumber <1)
             {
                 Contacts cons = new Contacts();
@@ -42,13 +41,14 @@ namespace PayBaq
                 var extprops =await a.GetExtendedPropertiesAsync();
                 props.Add(KnownContactProperties.DisplayName, c.DisplayName);
                 props.Add(KnownContactProperties.Telephone, c.PhoneNumbers);
-                extprops.Add("paybaq", 0);
-                contactList.Items.Add(contacts);
+                extprops.Add("MoneyOwed", 0);
+                extprops.Add("MoneyLent", 0);
+                extprops.Add("DateAdded", 0);
+                extprops.Add("Group", 0);
+                await a.SaveAsync();
             }
-            contactList.Width = 140;
 
             contactList.SelectionChanged += ListBox_SelectionChanged;
-            List.DataContext = contactList;
         }
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

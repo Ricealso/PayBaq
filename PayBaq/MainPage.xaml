@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:local="clr-namespace:PayBaq"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -13,26 +14,25 @@
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
 
-    <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--Pivot Control-->
-        <phone:Pivot Title="PayBaq">
+        <phone:Pivot Title="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}">
             <!--Pivot item one-->
-            <phone:PivotItem Header="🔍" Background="Transparent" TabNavigation="Cycle">
+            <phone:PivotItem x:Name="search" Header="🔍" Background="Transparent" TabNavigation="Cycle">
                 <TextBox Text="This is text" />
             </phone:PivotItem>
-
             <!--Pivot item two-->
-            <phone:PivotItem Header="Contacts" TabNavigation="Cycle">
-                <ListBox x:Name="List" ItemsSource="{Binding}" SelectionChanged="ListBox_SelectionChanged" Width="100"/>
+            <phone:PivotItem x:Name="main" TabNavigation="Cycle">
+                <ListBox x:Name="list" ItemsSource="{Binding}" SelectionChanged="ListBox_SelectionChanged" Width="100"/>
             </phone:PivotItem>
-            <phone:PivotItem Header="IOU" TabNavigation="Cycle">
+            <phone:PivotItem x:Name="groups" TabNavigation="Cycle">
                 <TextBox Text="This is text" />
             </phone:PivotItem>
-            <phone:PivotItem Header="UOMe" TabNavigation="Cycle">
-                <TextBox Text="This is text" />
+            <phone:PivotItem x:Name="settings" Header="Settings" TabNavigation="Cycle">
+                    <CheckBox Content="SelfAwareness" Height="Auto" HorizontalAlignment="Left" Margin="60,20,0,0" Name="selfAwarenessSetting" VerticalAlignment="Top"
+                    IsChecked="{Binding Source={StaticResource AppSettings}, Path=SelfAwarenessSetting, Mode=TwoWay}"  />
             </phone:PivotItem>
         </phone:Pivot>
     </Grid>
-    
+
 </phone:PhoneApplicationPage>

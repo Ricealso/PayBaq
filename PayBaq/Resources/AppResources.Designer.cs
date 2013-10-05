@@ -79,11 +79,20 @@ namespace PayBaq.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MY APPLICATION.
+        ///   Looks up a localized string similar to PayBaq.
         /// </summary>
         public static string ApplicationTitle {
             get {
                 return ResourceManager.GetString("ApplicationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MoneyBitches.
+        /// </summary>
+        public static string contactName {
+            get {
+                return ResourceManager.GetString("contactName", resourceCulture);
             }
         }
         
