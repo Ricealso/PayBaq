@@ -8,6 +8,7 @@
     <!--Application Resources-->
     <Application.Resources>
         <local:LocalizedStrings xmlns:local="clr-namespace:PayBaq" x:Key="LocalizedStrings"/>
+        <local:AppSettings xmlns:local="clr-namespace:PayBaq" x:Key="AppSettings"/>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

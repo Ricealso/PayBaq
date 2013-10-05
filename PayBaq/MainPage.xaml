@@ -30,7 +30,7 @@
             </phone:PivotItem>
             <phone:PivotItem x:Name="settings" Header="Settings" TabNavigation="Cycle">
                     <CheckBox Content="SelfAwareness" Height="Auto" HorizontalAlignment="Left" Margin="60,20,0,0" Name="selfAwarenessSetting" VerticalAlignment="Top"
-                    IsChecked="{Binding Source={StaticResource AppSettings}, Path=SelfAwarenessSetting, Mode=TwoWay}"  />
+                    IsChecked="{Binding Source={StaticResource AppSettings}, Path=AppResources.SelfAwarenessSetting, Mode=TwoWay}"  />
             </phone:PivotItem>
         </phone:Pivot>
     </Grid>

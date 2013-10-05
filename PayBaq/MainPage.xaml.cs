@@ -8,18 +8,22 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Microsoft.Phone.UserData;
+using Windows.Foundation;
 using Windows.Phone.PersonalInformation;
+using Windows.Phone;
+using PayBaq.Resources;
 
 namespace PayBaq
 {
     public partial class MainPage : PhoneApplicationPage
     {
         ContactStore contacts;
-        ListBox contactList;
+        string groupname, mainname;
         public MainPage()
         {
             InitializeComponent();
             CreateContactStore();
+            SetNames();
         }
         private async void CreateContactStore()
         {
@@ -47,8 +51,11 @@ namespace PayBaq
                 extprops.Add("Group", 0);
                 await a.SaveAsync();
             }
-
-            contactList.SelectionChanged += ListBox_SelectionChanged;
+            
+        }
+        void SetNames()
+        {
+            if (AppSettings)
         }
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
