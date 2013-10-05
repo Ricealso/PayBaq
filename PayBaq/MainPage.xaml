@@ -1,5 +1,5 @@
 ﻿<phone:PhoneApplicationPage
-    x:Class="PayBaq.PayBaq"
+    x:Class="PayBaq.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
@@ -19,18 +19,18 @@
         <phone:Pivot Title="PayBaq">
             <!--Pivot item one-->
             <phone:PivotItem Header="🔍" Background="Transparent" TabNavigation="Cycle">
-                <Grid/>
+                <TextBox Text="This is text" />
             </phone:PivotItem>
 
             <!--Pivot item two-->
             <phone:PivotItem Header="Contacts" TabNavigation="Cycle">
-                <Grid/>
+                <ListBox x:Name="List" ItemsSource="{Binding}" SelectionChanged="ListBox_SelectionChanged" Width="100"/>
             </phone:PivotItem>
             <phone:PivotItem Header="IOU" TabNavigation="Cycle">
-                <Grid/>
+                <TextBox Text="This is text" />
             </phone:PivotItem>
             <phone:PivotItem Header="UOMe" TabNavigation="Cycle">
-                <Grid/>
+                <TextBox Text="This is text" />
             </phone:PivotItem>
         </phone:Pivot>
     </Grid>

@@ -12,10 +12,11 @@ using Windows.Phone.PersonalInformation;
 
 namespace PayBaq
 {
-    public partial class PayBaq : PhoneApplicationPage
+    public partial class MainPage : PhoneApplicationPage
     {
         ContactStore contacts;
-        public PayBaq()
+        ListBox contactList;
+        public MainPage()
         {
             InitializeComponent();
             CreateContactStore();
@@ -23,7 +24,7 @@ namespace PayBaq
         private async void CreateContactStore()
         {
             contacts = await ContactStore.CreateOrOpenAsync(ContactStoreSystemAccessMode.ReadWrite, ContactStoreApplicationAccessMode.ReadOnly);
-             
+             contactList = new ListBox();
             if (contacts.RevisionNumber <1)
             {
                 Contacts cons = new Contacts();
@@ -42,8 +43,17 @@ namespace PayBaq
                 props.Add(KnownContactProperties.DisplayName, c.DisplayName);
                 props.Add(KnownContactProperties.Telephone, c.PhoneNumbers);
                 extprops.Add("paybaq", 0);
+                contactList.Items.Add(contacts);
             }
-        }
+            contactList.Width = 140;
 
+            contactList.SelectionChanged += ListBox_SelectionChanged;
+            List.DataContext = contactList;
+        }
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
     }
+
 }
